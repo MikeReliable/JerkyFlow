@@ -28,7 +28,7 @@ public class JerkyFinder {
             double stressStart = Double.parseDouble(valuesStart[2]);
             double stressAfterStart = Double.parseDouble(valuesAfterStart[2]);
 
-            if (stressStart - stressAfterStart > 0.1) { // пороговое значение stressDrop
+            if (stressStart - stressAfterStart > 0) { // пороговое значение stressDrop
                 for (int j = i; j < lines.size() - 1; j++) {
                     String row = lines.get(j);
                     String rowthen = lines.get(j + 1);
@@ -48,7 +48,7 @@ public class JerkyFinder {
                             fileWriter.append(text);
                         }
                         i = j;
-                        j = lines.size() - 1;
+                        break;
                     }
                 }
             }
