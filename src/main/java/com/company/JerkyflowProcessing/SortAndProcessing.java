@@ -1,12 +1,15 @@
 package com.company.JerkyflowProcessing;
 
+import com.company.JerkyFlowDetecting.FileScanner;
+import com.company.JerkyFlowDetecting.JerkyFinder;
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -19,7 +22,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortAndProcessing extends Application {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, IOException {
+
+        JerkyFinder jerkyFinder = new JerkyFinder();
+        FileScanner fileScanner = new FileScanner();
+        List<String> rows = fileScanner.fileScanner();
+        jerkyFinder.jerkyFinder(rows);
         SortAndProcessingMethods methods = new SortAndProcessingMethods();
         methods.sorting();
         methods.processing();
@@ -32,7 +40,7 @@ public class SortAndProcessing extends Application {
         init(stage);
     }
 
-    private void init(Stage stage) {
+    private void init(Stage primaryStage) {
         TreeMap<Double, Integer> graph = null;
         SortAndProcessingMethods methods = new SortAndProcessingMethods();
         try {
@@ -42,8 +50,8 @@ public class SortAndProcessing extends Application {
             e.printStackTrace();
         }
 //        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
-        HBox root = new HBox();
-        Scene scene = new Scene(root, 600, 300);
+        StackPane group = new StackPane();
+        Scene scene = new Scene(group);
 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Drop, MPa");
@@ -62,10 +70,9 @@ public class SortAndProcessing extends Application {
             });
         }
         lineChart.getData().add(data);
-        root.getChildren().add(lineChart);
-
-        stage.setScene(scene);
-        stage.show();
+        group.getChildren().add(lineChart);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
 

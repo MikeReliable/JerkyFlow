@@ -28,7 +28,7 @@ public class JerkyFinder {
             double stressStart = Double.parseDouble(valuesStart[2]);
             double stressAfterStart = Double.parseDouble(valuesAfterStart[2]);
 
-            if (stressStart - stressAfterStart > 0.1) {
+            if (stressStart - stressAfterStart > 0.1) { // пороговое значение stressDrop
                 for (int j = i; j < lines.size() - 1; j++) {
                     String row = lines.get(j);
                     String rowthen = lines.get(j + 1);
@@ -40,7 +40,7 @@ public class JerkyFinder {
                         deformationEnd = Double.parseDouble(valuesthen[1]);
                         stressEnd = Double.parseDouble(valuesthen[2]);
                     } else {
-                        if (stressStart - stressEnd > 0.3) {
+                        if (stressStart - stressEnd > 0.3) { //начальное значение итервала stressDrop "
                             double stressDropMax = stressStart - stressEnd;
                             double deformationDuration = deformationEnd - deformationStart;
                             String text = (actionTime + "\t" + deformationStart + "\t" + stressStart + "\t" + stressDropMax + "\t" + deformationDuration + "\n");
