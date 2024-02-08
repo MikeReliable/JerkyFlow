@@ -8,29 +8,24 @@ import java.util.List;
 
 public class FileScanner {
 
-    private String line;
     private List<String> lines;
-
     BufferedReader reader;
 
     public List<String> fileScanner() {
-
-        {
-            try {
-                reader = new BufferedReader(new FileReader("src/main/java/com/company/JerkyFlowDetecting/Question.txt"));
-                lines = new ArrayList<>();
-                while ((line = reader.readLine()) != null) {
-                    line = line.replace(',', '.');
-                    if (!line.contains("--")) {
-                        lines.add(line);
-                        lines.removeIf(item -> item == null || "".equals(item));
+        try {
+            reader = new BufferedReader(new FileReader("src/main/java/com/company/JerkyFlowDetecting/Question.txt"));
+            lines = new ArrayList<>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.replace(',', '.');
+                if (!line.contains("--")) {
+                    lines.add(line);
+                    lines.removeIf(item -> item == null || "".equals(item));
 //                        System.out.println(line);
-                    }
                 }
-
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return lines;
     }

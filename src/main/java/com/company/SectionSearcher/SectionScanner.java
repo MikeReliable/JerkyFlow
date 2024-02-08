@@ -96,8 +96,6 @@ public class SectionScanner {
                         stressMax = 0;
                     }
                 } // end division by stress
-
-
             }
         } catch (IOException e) {
             e.printStackTrace();

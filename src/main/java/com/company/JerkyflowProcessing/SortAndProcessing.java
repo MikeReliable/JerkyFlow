@@ -1,14 +1,18 @@
 package com.company.JerkyflowProcessing;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.*;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.*;
@@ -24,11 +28,11 @@ public class SortAndProcessing extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         init(stage);
     }
 
-    private void init(Stage stage) throws IOException {
+    private void init(Stage stage) {
         TreeMap<Double, Integer> graph = null;
         SortAndProcessingMethods methods = new SortAndProcessingMethods();
         try {
@@ -58,8 +62,6 @@ public class SortAndProcessing extends Application {
                 data.getData().add(new XYChart.Data(x, y));
             });
         }
-
-
         lineChart.getData().add(data);
         root.getChildren().add(lineChart);
 
@@ -123,7 +125,6 @@ class SortAndProcessingMethods {
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
             }
-
             while (k < m) {
                 for (int i = 1; i < lines.size(); i++) {
                     String row = lines.get(i);
