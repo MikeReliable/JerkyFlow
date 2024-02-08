@@ -3,7 +3,6 @@ package com.company.JerkyflowProcessing;
 import com.company.JerkyFlowDetecting.FileScanner;
 import com.company.JerkyFlowDetecting.JerkyFinder;
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
