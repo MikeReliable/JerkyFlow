@@ -1,4 +1,4 @@
-package com.company.JerkyFlowDetecting;
+package com.company.JerkyflowProcessing;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +8,6 @@ public class JerkyFinder {
 
     private double deformationEnd;
     private double stressEnd;
-
     public JerkyFinder() {
     }
 
@@ -40,7 +39,7 @@ public class JerkyFinder {
                         deformationEnd = Double.parseDouble(valuesthen[1]);
                         stressEnd = Double.parseDouble(valuesthen[2]);
                     } else {
-                        if (stressStart - stressEnd > 0.3) { //начальное значение итервала stressDrop "
+                        if (stressStart - stressEnd > 0.3 && stressStart - stressEnd < 10.0) { //начальное и конечное значение интервала stressDrop
                             double stressDropMax = stressStart - stressEnd;
                             double deformationDuration = deformationEnd - deformationStart;
                             double scale = Math.pow(10, 5);

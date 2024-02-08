@@ -1,4 +1,4 @@
-package com.company.JerkyFlowDetecting;
+package com.company.JerkyflowProcessing;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
