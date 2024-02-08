@@ -1,9 +1,7 @@
 package com.company.JerkyflowProcessing;
 
-import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 import java.text.DecimalFormat;
@@ -13,22 +11,16 @@ public class ShowCoordinatesNode extends StackPane {
 
         final Label label = createDataThresholdLabel(Double.parseDouble(x), y);
 
-        setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                setScaleX(1);
-                setScaleY(1);
-                getChildren().setAll(label);
-                setCursor(Cursor.NONE);
-                toFront();
-            }
+        setOnMouseEntered(mouseEvent -> {
+            setScaleX(1);
+            setScaleY(1);
+            getChildren().setAll(label);
+            setCursor(Cursor.NONE);
+            toFront();
         });
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                getChildren().clear();
-                setCursor(Cursor.CROSSHAIR);
-            }
+        setOnMouseExited(mouseEvent -> {
+            getChildren().clear();
+            setCursor(Cursor.CROSSHAIR);
         });
     }
 
