@@ -13,12 +13,12 @@ class SortAndProcessingMethods {
 
     private String line;
     private List<String> lines;
-    double stressDrop, stress;
+    double stressDrop, stress, min;
     double stressResult = 0, meanStress = 0;
     int count = 0;
-    double k = 0.1; // начальное значение интервала stressDrop
-    double m = 10.0; // конечное значение интервала stressDrop
-    double n = 0.1; // шаг сканирования интервала stressDrop
+    public static final double stressDropMin = 0.3; // минимальное значение интервала stressDrop
+    public static final double StressDropMax = 10.0; // максимальное значение интервала stressDrop
+    final double step = 0.1; // шаг сканирования интервала stressDrop
 
     BufferedReader reader;
     FileWriter fileWriter, fileWriterProcessing;
@@ -63,14 +63,15 @@ class SortAndProcessingMethods {
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
             }
-            while (k < m) {
+            min=stressDropMin;
+            while (min < StressDropMax) {
                 for (int i = 1; i < lines.size(); i++) {
                     String row = lines.get(i);
                     String[] values = row.split("\t");
                     stress = Double.parseDouble(values[2]);
                     stressDrop = Double.parseDouble(values[3]);
 //                System.out.println(stress + " " + stressDrop);
-                    if (stressDrop < k + n && stressDrop >= k) {
+                    if (stressDrop < min + step && stressDrop >= min) {
                         count++;
                         stressResult += stress;
                         System.out.println(count + " " + stressDrop + " " + stressResult);
@@ -79,13 +80,13 @@ class SortAndProcessingMethods {
                 if (stressResult != 0) {
                     meanStress = stressResult / count;
                     DecimalFormat df = new DecimalFormat("###.#####");
-                    fileWriterProcessing.write((df.format(k)).replace(",", ".") + "\t" + count
+                    fileWriterProcessing.write((df.format(min)).replace(",", ".") + "\t" + count
                             + "\t" + (df.format(meanStress)).replace(",", ".") + "\n");
-                    processingMap.put(k, count);
+                    processingMap.put(min, count);
                     count = 0;
                     stressResult = 0;
                 }
-                k += n;
+                min += step;
             }
             fileWriterProcessing.flush();
         } catch (IOException ioException) {

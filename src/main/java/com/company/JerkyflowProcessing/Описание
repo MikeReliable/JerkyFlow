@@ -3,14 +3,10 @@
 2й столбец - деформация, %
 3й столбец - напряжение, МПа
 
-Предварительно нужно определить параметры искомых скачков
-в SortAndProcessingMethods:
-87  double k = 0.3; // начальное значение итервала stressDrop
-88  double m = 10.0; // конечное значение итервала stressDrop
-89  double n = 0.1; // шаг сканирования  итервала stressDrop
-в JerkyFinder:
-31  if (stressStart - stressAfterStart > 0.1) { // пороговое значение stressDrop
-43  if (stressStart - stressEnd > 0.3) { //начальное значение итервала stressDrop
+Предварительно нужно определить параметры искомых скачков в SortAndProcessingMethods:
+19  public static final double stressDropMin = 0.3; // минимальное значение интервала stressDrop
+20  public static final double StressDropMax = 10.0; // максимальное значение интервала stressDrop
+21  final double step = 0.1; // шаг сканирования интервала stressDrop
 
 В файл Answer записывается информация о положении скачка, его величине и продолжительности.
 SortedAnswer сортирует информацию файла Answer о положении скачка, его величине и продолжительности по величине скачка

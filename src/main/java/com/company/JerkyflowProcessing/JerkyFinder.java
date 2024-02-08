@@ -39,7 +39,7 @@ public class JerkyFinder {
                         deformationEnd = Double.parseDouble(valuesthen[1]);
                         stressEnd = Double.parseDouble(valuesthen[2]);
                     } else {
-                        if (stressStart - stressEnd > 0.3 && stressStart - stressEnd < 10.0) { //начальное и конечное значение интервала stressDrop
+                        if (stressStart - stressEnd > SortAndProcessingMethods.stressDropMin && stressStart - stressEnd < SortAndProcessingMethods.StressDropMax) { //начальное и конечное значение интервала stressDrop
                             double stressDropMax = stressStart - stressEnd;
                             double deformationDuration = deformationEnd - deformationStart;
                             double scale = Math.pow(10, 5);
