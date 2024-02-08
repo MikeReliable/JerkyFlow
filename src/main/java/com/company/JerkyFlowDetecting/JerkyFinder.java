@@ -43,7 +43,8 @@ public class JerkyFinder {
                         if (stressStart - stressEnd > 0.3) { //начальное значение итервала stressDrop "
                             double stressDropMax = stressStart - stressEnd;
                             double deformationDuration = deformationEnd - deformationStart;
-                            String text = (actionTime + "\t" + deformationStart + "\t" + stressStart + "\t" + stressDropMax + "\t" + deformationDuration + "\n");
+                            double scale = Math.pow(10, 5);
+                            String text = (actionTime + "\t" + deformationStart + "\t" + stressStart + "\t" + Math.ceil(stressDropMax * scale) / scale + "\t" + Math.ceil(deformationDuration * scale) / scale + "\n");
                             fileWriter.append(text);
                         }
                         i = j;

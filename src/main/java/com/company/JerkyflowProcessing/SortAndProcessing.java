@@ -27,6 +27,7 @@ public class SortAndProcessing extends Application {
         FileScanner fileScanner = new FileScanner();
         List<String> rows = fileScanner.fileScanner();
         jerkyFinder.jerkyFinder(rows);
+
         SortAndProcessingMethods methods = new SortAndProcessingMethods();
         methods.sorting();
         methods.processing();
@@ -62,13 +63,22 @@ public class SortAndProcessing extends Application {
         lineChart.setTitle("Drop Numbers");
 
         XYChart.Series<String, Number> data = new XYChart.Series<>();
+        XYChart.Series<String, Number> points = new XYChart.Series<>();
         if (graph != null) {
             graph.forEach((key, value) -> {
                 String x = String.valueOf(key);
                 data.getData().add(new XYChart.Data(x, value));
+
+                XYChart.Data chartData;
+                chartData = new XYChart.Data(x, value);
+                chartData.setNode(new ShowCoordinatesNode(x, value));
+//                chartData.getNode().setStyle("-fx-padding: 2px;-fx-background-color: black;");
+                points.getData().add(chartData);
+
             });
         }
         lineChart.getData().add(data);
+        lineChart.getData().add(points);
         group.getChildren().add(lineChart);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -145,7 +155,7 @@ class SortAndProcessingMethods {
                 }
                 if (stressResult != 0) {
                     meanStress = stressResult / count;
-                    DecimalFormat df = new DecimalFormat("###.###");
+                    DecimalFormat df = new DecimalFormat("###.#####");
                     fileWriterProcessing.write((df.format(k)).replace(",", ".") + "\t" + count
                             + "\t" + (df.format(meanStress)).replace(",", ".") + "\n");
                     processingMap.put(k, count);
