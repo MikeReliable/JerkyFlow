@@ -10,9 +10,6 @@ public class Main {
         JerkyFinder jerkyFinder = new JerkyFinder();
         FileScanner fileScanner = new FileScanner();
         List<String> rows = fileScanner.fileScanner();
-//        for (String row : rows) {
-//            System.out.println(row);
-//        }
         jerkyFinder.jerkyFinder(rows);
     }
 }

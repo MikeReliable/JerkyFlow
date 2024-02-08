@@ -18,16 +18,13 @@ public class JerkyFinder {
         fileWriter.append("time,s\tstrain,%\tstress,MPa\tstressDrop,MPa\tstrainDropLength\n");
 
         for (int i = 1; i < lines.size() - 1; i++) {
-            String rowBeforeStart = lines.get(i - 1);
             String rowStart = lines.get(i);
             String rowAfterStart = lines.get(i + 1);
             // поиск точек максимумов и минимумов на диаграмме
-            String[] valuesBeforeStart = rowBeforeStart.split("\t");
             String[] valuesStart = rowStart.split("\t");
             String[] valuesAfterStart = rowAfterStart.split("\t");
             double actionTime = Double.parseDouble(valuesStart[0]);
             double deformationStart = Double.parseDouble(valuesStart[1]);
-            double stressBeforeStart = Double.parseDouble(valuesBeforeStart[2]);
             double stressStart = Double.parseDouble(valuesStart[2]);
             double stressAfterStart = Double.parseDouble(valuesAfterStart[2]);
 

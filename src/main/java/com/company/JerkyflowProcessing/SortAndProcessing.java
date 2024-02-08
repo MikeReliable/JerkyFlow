@@ -58,8 +58,7 @@ public class SortAndProcessing extends Application {
         if (graph != null) {
             graph.forEach((key, value) -> {
                 String x = String.valueOf(key);
-                Integer y = (Integer) value;
-                data.getData().add(new XYChart.Data(x, y));
+                data.getData().add(new XYChart.Data(x, value));
             });
         }
         lineChart.getData().add(data);
