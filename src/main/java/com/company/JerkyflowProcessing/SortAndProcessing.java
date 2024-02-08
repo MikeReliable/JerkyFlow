@@ -47,7 +47,7 @@ public class SortAndProcessing extends Application {
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("N");
 
-        BarChart<String, Number> lineChart = new BarChart<>(xAxis, yAxis);
+        LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle("Drop Numbers");
 
         XYChart.Series<String, Number> data = new XYChart.Series<>();
@@ -76,8 +76,8 @@ class SortAndProcessingMethods {
     double stressDrop, stress;
     double stressResult = 0, meanStress = 0;
     int count = 0;
-    double k = 0.3; // начальное значение итервала stressDrop
-    double m = 10.0; // конечное значение итервала stressDrop
+    double k = 0.1; // начальное значение итервала stressDrop
+    double m = 50.0; // конечное значение итервала stressDrop
     double n = 0.1; // шаг сканирования  итервала stressDrop
 
     BufferedReader reader;

@@ -15,8 +15,8 @@ public class JerkyFinder {
     private int rows;
     private String drop = " ", dropRef = " ";
 
-    private double k = 0.3; // начальное значение итервала stressDrop
-    private double m = 10.0; // конечное значение итервала stressDrop
+//    private double k = 0.01; // начальное значение итервала stressDrop
+//    private double m = 50.0; // конечное значение итервала stressDrop
 
 //    FileScanner fileScanner = new FileScanner();
 //    private List<String> lines = fileScanner.fileScanner();
