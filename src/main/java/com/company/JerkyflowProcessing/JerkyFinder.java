@@ -13,7 +13,7 @@ public class JerkyFinder {
 
     public void jerkyFinder(List<String> lines) throws IOException {
 
-        FileWriter fileWriter = new FileWriter("src/main/java/com/company/JerkyFlowDetecting/Answer.txt");
+        FileWriter fileWriter = new FileWriter("src/main/java/com/company/JerkyflowProcessing/Answer.txt");
         fileWriter.append("time,s\tstrain,%\tstress,MPa\tstressDrop,MPa\tstrainDropLength\n");
 
         for (int i = 1; i < lines.size() - 1; i++) {

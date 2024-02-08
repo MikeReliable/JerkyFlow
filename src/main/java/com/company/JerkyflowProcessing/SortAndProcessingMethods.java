@@ -31,7 +31,7 @@ class SortAndProcessingMethods {
         try {
             fileWriter = new FileWriter("src/main/java/com/company/JerkyflowProcessing/SortedAnswer.txt");
             fileWriter.append("time,s\tstrain,%\tstress,MPa\tstressDrop,MPa\tstrainDropLength\n");
-            reader = new BufferedReader(new FileReader("src/main/java/com/company/JerkyFlowDetecting/Answer.txt"));
+            reader = new BufferedReader(new FileReader("src/main/java/com/company/JerkyflowProcessing/Answer.txt"));
             lines = new ArrayList<>();
             while ((line = reader.readLine()) != null) {
                 lines.add(line);

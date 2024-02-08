@@ -13,7 +13,7 @@ public class FileScanner {
 
     public List<String> fileScanner() {
         try {
-            reader = new BufferedReader(new FileReader("src/main/java/com/company/JerkyFlowDetecting/Question.txt"));
+            reader = new BufferedReader(new FileReader("src/main/java/com/company/JerkyflowProcessing/Question.txt"));
             lines = new ArrayList<>();
             String line;
             while ((line = reader.readLine()) != null) {
